@@ -1,0 +1,33 @@
+
+<!-- picture to the question -->
+<div class="jumbotron">
+  <img src="{{questions[counter].image}}">
+</div>
+
+
+<div>
+  <h4>{{questions[counter].question}}</h4>
+</div>
+
+<!-- div with all the answers -->
+<div class="radios">
+    <div ng-repeat="answers in questions[counter].answers" class="answers">
+      <input type="radio" name="options" value="{{answers}}" id="{{answers}}"/>
+      <label class="radio" for="{{answers}}" ng-click="saveAnswer(answers.id)"><h3>{{answers.alternative}}</h3></label>
+    </div>
+ 
+</div>
+
+
+
+
+
+
+
+
+<div class="next-question clearfix">
+  <button class="btn btn-lg btn-primary pull-right" ng-click="checkAnswer()">Next Question</button>
+</div>
+counter: {{counter+1}}
+
+id: {{answer}}
