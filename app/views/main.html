@@ -1,4 +1,19 @@
 
+
+<div class="navbar navbar-default" role="navigation">
+  <div class="navbar-header">
+    <div class="collapse navbar-collapse" id="js-navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a  href ng-click="counter='0'">1</a></li>
+        <li><a href ng-click="counter='1'">2</a></li>
+        <li><a href ng-click="counter='2'">3</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
 <!-- picture to the question -->
 <div class="jumbotron">
   <img src="{{questions[counter].image}}">
@@ -20,14 +35,11 @@
 
 
 
-
-
-
-
-
 <div class="next-question clearfix">
+  <button class="btn btn-lg btn-primary pull-left" ng-click="previous()">Previous Question</button>
+</div>
   <button class="btn btn-lg btn-primary pull-right" ng-click="checkAnswer()">Next Question</button>
 </div>
-counter: {{counter+1}}
+counter: {{counter}}
 
 id: {{answer}}

@@ -2,29 +2,27 @@
 
 /**
  * @ngdoc function
- * @name angularappApp.controller:MainCtrl
+ * @name myApp.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the angularappApp
+ * Controller of the myApp
  */
-angular.module('angularappApp')
+angular.module('myApp')
   .controller('MainCtrl', function ($scope, $location) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+
 
     $scope.changeView = function(view){
     	$location.path(view);
     }
 
     $scope.counter = 0;
+    $scope.answer = 0;
 
     $scope.next = function(){
 
     	if( $scope.counter < $scope.questions.length-1){
     		$scope.counter++;
+    		$scope.answer = 0;
     	}else{
     		//set last question to true here
     	}
@@ -38,21 +36,37 @@ angular.module('angularappApp')
     	}
     }
 
+    $scope.sayHello = function(){
+        $scope.counter = 1;
+        alert($scope.counter);
+    }
+
+
+
 
     $scope.saveAnswer = function(id){
     	$scope.answer = id;
     }
     
     $scope.checkAnswer = function(){
-    	var id = $scope.answer - 1;
-    	var correct = $scope.questions[$scope.counter].answers[id].correct;
 
-    	if(correct){
-    		alert(correct);
+    	var id = $scope.answer - 1;
+        // var box = document.getElementById(id);
+
+    	if(id > 0){
+    		var correct = $scope.questions[$scope.counter].answers[id].correct;
     	}else{
-    		alert(false);
+    		var correct = null;
+    	}
+    	
+
+    	if(correct == true){
+    		alert("Right answer");
+    	}else{
+    		console.log($scope.questions[$scope.counter].answers[id]);
     	}
     	$scope.next();
+
     }
 
 
@@ -77,6 +91,16 @@ angular.module('angularappApp')
     			{alternative: "Gösta", correct: false, id: 2},
     			{alternative: "Kalle", correct: false, id: 3},
     			{alternative: "Adolf", correct: false, id: 4}
+    		]
+    	},
+			{
+				image: "../images/H.M.jpg",
+    		question: "Hur många guld tog Karolina Kluft i OS 98?",
+    		answers: [
+    			{alternative: "2", correct: true, id: 1},
+    			{alternative: "1", correct: false, id: 2},
+    			{alternative: "Inget", correct: false, id: 3},
+    			{alternative: "5", correct: false, id: 4}
     		]
     	}
     ]

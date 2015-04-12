@@ -90,18 +90,23 @@ body {
   }
 }
 
-.answers {
-  float: left;
-  width: 50%;
-  text-align: center;
+.radio, .checkbox {
+  margin: 0;
 }
 
-
+.answers {
+  float: left;
+  width: 45%;
+  text-align: center;
+  border: 2px solid black;
+  margin: 2%;
+}
 
 div > .radio{
-    display:inline-block;
-    width:95%;
-    height:100px
+  display:inline-block;
+  width:100%;
+  height:100px;
+    
 }
 
 div > input[type=radio]{
