@@ -3,10 +3,10 @@
 <div class="navbar navbar-default" role="navigation">
   <div class="navbar-header">
     <div class="collapse navbar-collapse" id="js-navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li><a  href ng-click="counter='0'">1</a></li>
-        <li><a href ng-click="counter='1'">2</a></li>
-        <li><a href ng-click="counter='2'">3</a></li>
+      <ul class="nav navbar-nav" ng-repeat="questions in questions">
+        <li ng-class="redOrGreen">
+          <a  href ng-click="setCounter($index)" ng-model="counter">{{$index + 1}}</a> 
+        </li> 
       </ul>
     </div>
   </div>
@@ -16,7 +16,7 @@
 
 <!-- picture to the question -->
 <div class="jumbotron">
-  <img src="{{questions[counter].image}}">
+  <img src="{{questions[counter].image}}" class="question-image">
 </div>
 
 
@@ -25,21 +25,17 @@
 </div>
 
 <!-- div with all the answers -->
-<div class="radios">
-    <div ng-repeat="answers in questions[counter].answers" class="answers">
-      <input type="radio" name="options" value="{{answers}}" id="{{answers}}"/>
-      <label class="radio" for="{{answers}}" ng-click="saveAnswer(answers.id)"><h3>{{answers.alternative}}</h3></label>
-    </div>
- 
+
+<div ng-repeat="choice in questions[counter].choices" class="answer">
+  <input type="radio" name="options" id="{{choice}}"
+ng-model="choice.selected" ng-value="true" ng-change="updateOptions(questions[counter].choices,choice);"/>
+  <label for="{{choice}}" ng-click="saveAnswer(choice.id)" ng-class="redOrGreen">
+    {{choice.selected}}
+    <h3>{{choice.text}}</h3>
+  </label>
 </div>
 
 
-
-<div class="next-question clearfix">
-  <button class="btn btn-lg btn-primary pull-left" ng-click="previous()">Previous Question</button>
-</div>
-  <button class="btn btn-lg btn-primary pull-right" ng-click="checkAnswer()">Next Question</button>
-</div>
 counter: {{counter}}
-
+</br>
 id: {{answer}}

@@ -1,6 +1,12 @@
 angular.module('myApp')
-	.directive("name", function(){
-	return function(scope, ele, att){
-
-	}
-});
+	.directive('my-directive', ['$animate', function($animate) {
+	  return function(scope, element, attrs) {
+	    element.on('click', function() {
+	      if(element.hasClass('clicked')) {
+	        $animate.removeClass(element, 'clicked');
+	      } else {
+	        $animate.addClass(element, 'clicked');
+	      }
+	    });
+	  };
+	}]);

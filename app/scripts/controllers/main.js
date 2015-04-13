@@ -8,15 +8,16 @@
  * Controller of the myApp
  */
 angular.module('myApp')
-  .controller('MainCtrl', function ($scope, $location) {
+  .controller('MainCtrl', [ '$scope', '$location', function ($scope, $location) {
 
 
     $scope.changeView = function(view){
     	$location.path(view);
-    }
+    };
 
     $scope.counter = 0;
     $scope.answer = 0;
+    $scope.redOrGreen = '';
 
     $scope.next = function(){
 
@@ -26,7 +27,7 @@ angular.module('myApp')
     	}else{
     		//set last question to true here
     	}
-    }
+    };
 
     $scope.previous = function(){
     	if( $scope.counter > 0){
@@ -34,77 +35,96 @@ angular.module('myApp')
     	}else{
     		//set first question to true here
     	}
+    };
+
+
+    $scope.setCounter = function(index){
+      $scope.counter = index;
     }
 
-    $scope.sayHello = function(){
-        $scope.counter = 1;
-        alert($scope.counter);
-    }
 
+    //This method runs when the radio inputs are changed, 
+    //  $scope.updateOptions = function(choices, choice){
+    //   for(var i=0; i<choices.length; i++){
+    //     //loops through choices and sets selected to true if id:s match
+    //     choices[i].selected = choices[i].id===choice.id;
+    //     console.log(choices[i].selected);
+    //     console.log("choices[i].id = " + choices[i].id + " choice.id = " + choice.id);
+    //   }
+    // };
 
 
 
     $scope.saveAnswer = function(id){
-    	$scope.answer = id;
-    }
+    	$scope.answer = id -1 ;
+
+      $scope.checkAnswer($scope.answer);
+
+    };
     
-    $scope.checkAnswer = function(){
+    $scope.checkAnswer = function(id){
 
-    	var id = $scope.answer - 1;
-        // var box = document.getElementById(id);
+      var correct = $scope.questions[$scope.counter].choices[id].correct;
+      var selected = $scope.questions[$scope.counter].choices[id].selected = true;
+      console.log($scope.questions[$scope.counter].choices[id].correct);
 
-    	if(id > 0){
-    		var correct = $scope.questions[$scope.counter].answers[id].correct;
-    	}else{
-    		var correct = null;
-    	}
-    	
 
-    	if(correct == true){
-    		alert("Right answer");
-    	}else{
-    		console.log($scope.questions[$scope.counter].answers[id]);
-    	}
-    	$scope.next();
 
-    }
+      if(correct && selected){
+        $scope.redOrGreen = 'green';
+      }else{
+        $scope.redOrGreen = 'red';
+      }
+
+    };
 
 
     //temp objects of questions, will later be JSON
 
     $scope.questions = [
  			{
- 				image: "../images/yeoman.png",
-    		question: "Vad är världsrekordet i höjdhopp?",
-    		answers: [
-    			{alternative: "1.10m", correct: false, id: 1},
-    			{alternative: "2.10m", correct: false, id: 2},
-    			{alternative: "2.20m", correct: true,  id: 3},
-    			{alternative: "2.35m", correct: false, id: 4}
+        image: 'http://www.svt.se/oppet-arkiv-pub/cachable_image/1365678145000/b/article1146709.svt/ALTERNATES/extralarge/bjorne1920.jpg',
+    		question: 'Vad heter björnen?',
+    		choices: [
+          {id: 1, text: 'Bamse', correct: false,  selected: false},
+          {id: 2, text: 'Brumse', correct: false, selected: false},
+          {id: 3, text: 'Björne', correct: true, selected: false},
+          {id: 4, text: 'Nalle', correct: false, selected: false}
     		]
     	},
 			{
-				image: "../images/H.M.jpg",
-    		question: "Vad heter Sveriges konung?",
-    		answers: [
-    			{alternative: "Gustaf", correct: true, id: 1},
-    			{alternative: "Gösta", correct: false, id: 2},
-    			{alternative: "Kalle", correct: false, id: 3},
-    			{alternative: "Adolf", correct: false, id: 4}
+        image: 'http://www.tommyfotografen.se/wp-content/uploads/2010/04/fakta01.jpg',
+    		question: 'Vad heter Sveriges största sjö?',
+    		choices: [
+          {id: 1, text: 'Vättern', correct: false,  selected: false},
+          {id: 2, text: 'Mälaren', correct: false, selected: false},
+          {id: 3, text: 'Skagern', correct: false, selected: false},
+          {id: 4, text: 'Vänern', correct: true, selected: false}
     		]
     	},
-			{
-				image: "../images/H.M.jpg",
-    		question: "Hur många guld tog Karolina Kluft i OS 98?",
-    		answers: [
-    			{alternative: "2", correct: true, id: 1},
-    			{alternative: "1", correct: false, id: 2},
-    			{alternative: "Inget", correct: false, id: 3},
-    			{alternative: "5", correct: false, id: 4}
-    		]
-    	}
-    ]
+      {
+        image: '../images/H.M.jpg',
+        question: 'Vad heter Sveriges konung?',
+        choices: [
+          {id: 1, text: 'Carl XVI Gustaf', correct: true,  selected: false},
+          {id: 2, text: 'Karl XVI Gustaf', correct: false, selected: false},
+          {id: 3, text: 'Gustaf II Adolf', correct: false, selected: false},
+          {id: 4, text: 'Carl Phillip', correct: false, selected: false}
+        ]
+      },
+      {
+        image: 'http://www.bbu.se/wp-content/uploads/2013/08/kraftor.jpg',
+        question: 'Vilken månad har man "kräftskiva"',
+        choices: [
+          {id: 1, text: 'Maj', correct: false,  selected: false},
+          {id: 2, text: 'Augusti', correct: true, selected: false},
+          {id: 3, text: 'Juli', correct: false, selected: false},
+          {id: 4, text: 'Oktober', correct: false, selected: false}
+        ]
+      }
+    ];
 
 
 
-  });
+
+  }]);
