@@ -91,6 +91,7 @@ body {
 }
 
 label {
+  cursor: pointer;
   margin: 0;
   display: block;
   height: 100%;
@@ -113,9 +114,10 @@ h3 { padding: 10px 0; margin: 0; }
   text-align: center;
   margin: 2%;
   border: 2px solid #C9C9C9;
--webkit-box-shadow: inset 5px 49px 30px 1px rgba(201, 201, 201, 0.25);
--moz-box-shadow:    inset 5px 49px 30px 1px rgba(201, 201, 201, 0.25);
-box-shadow:         inset 5px 49px 30px 1px rgba(201, 201, 201, 0.25);
+
+  -webkit-box-shadow: inset 5px 49px 30px 1px rgba(201, 201, 201, 0.25);
+  -moz-box-shadow:    inset 5px 49px 30px 1px rgba(201, 201, 201, 0.25);
+  box-shadow:         inset 5px 49px 30px 1px rgba(201, 201, 201, 0.25);
 }
 
 div > .radio{
@@ -129,8 +131,8 @@ div > input[type=radio]{
     display:none
 }
 
-div > input[type=radio]:hover{
-    background: blue;
+.answer:hover{
+    background: #4B96EB;
 }
 
 
@@ -153,6 +155,13 @@ div > input[type=radio]:checked + .red{
 }
 
 
-.clicked {
-  border: 2px solid gold;
+
+.score-menu-item {
+  background: #D94E4E;
+  color: white;
+  border-left: 1px solid #e7e7e7;
+}
+
+.score-menu-item > a {
+  color: white; 
 }

@@ -8,16 +8,20 @@
  * Controller of the myApp
  */
 angular.module('myApp')
-  .controller('MainCtrl', [ '$scope', '$location', function ($scope, $location) {
+  .controller('MainCtrl', [ '$scope', '$location', 'answerService', function ($scope, $location, answerService) {
 
+    // variables
+    $scope.counter = 0;
+    $scope.answer = 0;
+    $scope.redOrGreen = '';
+    var runOnce = true;
 
     $scope.changeView = function(view){
     	$location.path(view);
     };
 
-    $scope.counter = 0;
-    $scope.answer = 0;
-    $scope.redOrGreen = '';
+
+
 
     $scope.next = function(){
 
@@ -64,18 +68,23 @@ angular.module('myApp')
     
     $scope.checkAnswer = function(id){
 
-      var correct = $scope.questions[$scope.counter].choices[id].correct;
-      var selected = $scope.questions[$scope.counter].choices[id].selected = true;
-      console.log($scope.questions[$scope.counter].choices[id].correct);
+      if(runOnce){
+        console.log(runOnce);
+        var correct = $scope.questions[$scope.counter].choices[id].correct;
+        var selected = $scope.questions[$scope.counter].choices[id].selected = true;
+        console.log($scope.questions[$scope.counter].choices[id].selected);
 
-
-
-      if(correct && selected){
-        $scope.redOrGreen = 'green';
-      }else{
-        $scope.redOrGreen = 'red';
+        if(correct && selected){
+          console.log("this happended");
+          $scope.redOrGreen = "green";
+        }else{
+          console.log("This never happeneded");
+          $scope.redOrGreen = "red";
+        }
       }
-
+      runOnce = false;
+      console.log(runOnce);
+      $('label').click(false);
     };
 
 
@@ -123,8 +132,5 @@ angular.module('myApp')
         ]
       }
     ];
-
-
-
 
   }]);
