@@ -1,0 +1,40 @@
+
+
+<div class="navbar navbar-default" role="navigation">
+  <div class="navbar-header">
+    <div class="collapse navbar-collapse" id="js-navbar-collapse">
+      <ul class="nav navbar-nav" ng-repeat="questions in questions">
+        <li class="score-menu-item">
+          <a  href ng-click="setCounter($index)" ng-model="counter">{{$index + 1}}</a> 
+        </li> 
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- picture to the question -->
+<div class="jumbotron">
+  <img src="{{questions[counter].image}}" class="question-image">
+</div>
+
+
+<div>
+  <h4>{{questions[counter].question}}</h4>
+</div>
+
+<!-- div with all the answers -->
+
+<div ng-repeat="choice in questions[counter].choices" class="answer">
+  <input type="radio" name="options" id="{{choice}}"/>
+  <label for="{{choice}}" ng-click="saveAnswer(choice.id)" ng-class="redOrGreen">
+    {{choice.selected}}
+    <h3>{{choice.text}}</h3>
+  </label>
+</div>
+
+
+counter: {{counter}}
+</br>
+id: {{answer}}
