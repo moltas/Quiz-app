@@ -1,0 +1,45 @@
+<h2>Skapa en fråga</h2>
+<form ng-submit="addQuestion()">
+	<label>Question</label>
+	<input class="form-control" type="text" ng-model="question.text">
+	<label>Image Link</label>
+	<input class="form-control" type="text" ng-model="question.image">
+	<label>Alternative 1</label>
+	<input class="form-control" ng-model="option1">
+	<input type="checkbox" ng-model="correct1">{{correct1}}</br>
+
+	<label>Alternative 2</label>
+	<input class="form-control" ng-model="option2">
+	<input type="checkbox" ng-model="correct2">{{correct2}}</br>
+
+	<label>Alternative 3</label>
+	<input class="form-control" ng-model="option3">
+	<input type="checkbox" ng-model="correct3">{{correct3}}</br>
+
+	<label>Alternative 4</label>
+	<input class="form-control" ng-model="option4">
+	<input type="checkbox" ng-model="correct4">{{correct4}}</br>
+	
+	<button class="btn btn-primary" type="submit">Add Question</button>
+</form>
+
+
+
+<table class="table table-condensed">
+	<tr class="active">
+		<th>Fråga</th>
+		<th>Alternativ 1</th>
+		<th>Alternativ 2</th>
+		<th>Alternativ 3</th>
+		<th>Alternativ 4</th>
+		<th>delete</th>
+	</tr>
+	<tr ng-repeat="question in questions">
+		<td>{{question.text}}</td>
+		<td ng-repeat="choice in question.choices">{{choice.text}} {{choice.correct}}</td>
+
+		<td><button class="btn btn-danger" ng-click="deleteQuestion(question._id)">X</button></td>
+	</tr>
+
+
+</table>
