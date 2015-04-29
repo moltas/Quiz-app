@@ -27,7 +27,7 @@ myApp.config(function ($routeProvider) {
     })
     .when('/result_page', {
       templateUrl: 'partials/result_page.html',
-      controller: 'dataCtrl'
+      controller: 'resultsCtrl'
     })
     .when('/createquestion', {
       templateUrl: 'partials/createQuestion.html',

@@ -49,7 +49,7 @@ module.exports = function (grunt) {
         tasks: ['newer:jshint:test', 'karma']
       },
       sass: {
-        files: ['sass/**/*.{scss,sass}','sass/_partials/**/*.{scss,sass}'],
+        files: ['<%= yeoman.app %>/css/{,*/}*.scss'],
         tasks: ['sass:dist']
       },
       gruntfile: {
@@ -383,13 +383,13 @@ module.exports = function (grunt) {
     // Run some tasks in parallel to speed up the build process
     concurrent: {
       server: [
-        'copy:styles'
+        'copy:css'
       ],
       test: [
-        'copy:styles'
+        'copy:css'
       ],
       dist: [
-        'copy:styles',
+        'copy:css',
         'imagemin',
         'svgmin'
       ]
@@ -413,7 +413,6 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'wiredep',
-      'concurrent:server',
       'autoprefixer:server',
       'connect:livereload',
       'watch'
@@ -427,7 +426,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('test', [
     'clean:server',
-    'wiredep',
     'concurrent:test',
     'autoprefixer',
     'connect:test',

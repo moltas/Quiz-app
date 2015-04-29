@@ -18,17 +18,9 @@ myApp.controller('MainCtrl', [ '$scope',
                                'dataService', 
 function ($scope, $timeout, $rootScope, answerService, questions, $location, dataService) {
 
-  // # ISSUES
-
-  //När view ändras från questions till result_page så nollställs scope.playerSCore
-
-  //När man klickar flera gånger på ett alternativ så kallas metoden next flera gånger
 
     // variables
   $scope.counter = 0;
-  // $scope.answer = 0;
-  $scope.redOrGreen = '';
-
   $scope.playerScore = 0;
   var questionLength = null;
 
@@ -38,6 +30,7 @@ function ($scope, $timeout, $rootScope, answerService, questions, $location, dat
   //the array that holds all the questions
   $scope.questions = [];
 
+  //grabs the items from the database
   var refresh = function(){
     questions.getQuestions().success(function(results){
       $scope.questions = results;
@@ -55,34 +48,26 @@ function ($scope, $timeout, $rootScope, answerService, questions, $location, dat
   //watches counter and changes view if last question
   $scope.$watch('counter', function(counter){
     $rootScope.runOnce = false;  
-    $timeout(function(){
+    $timeout(function(){ //prevents view from changing too quickly
       running = false;
     }, 1000);
     
-    if(counter > questionLength){
+    if(counter > questionLength){ //if last question, changes to result page
       addPlayerScore();
       changeView("/result_page");
     }
   });
 
-
-
   $scope.next = function(){
     $scope.counter++;
   }
 
-
-
-
   //sets the counter to the index of the clicked anchor
   $scope.setCounter = function(index){
     $scope.counter = index;  
-
-
   };
 
-
-  $scope.saveAnswer = function(choice, options){
+  $scope.saveAnswer = function(choice, options, index){
 
     var correct = choice.correct;
 
@@ -96,23 +81,25 @@ function ($scope, $timeout, $rootScope, answerService, questions, $location, dat
     }
     
     //kollar ifall svar är rätt eller fel
-    if(answerService.checkAnswer(correct, selected)){
+    if(answerService.checkAnswer(correct, selected, index)){
       $scope.playerScore++;
+         
+    }else{
+      
     }
 
-    //Kallar metoden next efter 2sek
-
-    if(choice.selected){
+    //calls the method in 1.5sec
+    if(selected){
       $timeout(function(){
         if(running === false){
           $scope.next();
           running = true;
         }  
-      }, 2000);
+      }, 1500);
     }
   };
   
-  //adds value to a service so they can be displayed on the result screen
+  //adds values to a service so they can be displayed on the result screen
   var addPlayerScore = function(){
     dataService.setData($scope.playerScore);
     dataService.setLength(questionLength+1); 
@@ -123,9 +110,17 @@ function ($scope, $timeout, $rootScope, answerService, questions, $location, dat
 }]);
 
 
-myApp.controller('dataCtrl', ['$scope','dataService', function($scope, dataService){
+myApp.controller('resultsCtrl', ['$scope','dataService', function($scope, dataService){
 
   $scope.playerScore = dataService.data;
   $scope.questionLength = dataService.length;
+
+}]);
+
+myApp.controller('headerCtrl', ['$scope', '$location', function($scope, $location){
+
+  $scope.isActive = function(view){
+    return view === $location.path();
+  };
 
 }]);

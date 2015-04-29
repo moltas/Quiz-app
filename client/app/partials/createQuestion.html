@@ -26,7 +26,7 @@
 
 
 <table class="table table-condensed">
-	<tr class="active">
+	<tr>
 		<th>Fråga</th>
 		<th>Alternativ 1</th>
 		<th>Alternativ 2</th>
@@ -35,9 +35,8 @@
 		<th>delete</th>
 	</tr>
 	<tr ng-repeat="question in questions">
-		<td>{{question.text}}</td>
-		<td ng-repeat="choice in question.choices">{{choice.text}} {{choice.correct}}</td>
-
+		<td><span>{{question.text}}<span></td>
+		<td ng-repeat="choice in question.choices"><span>{{choice.text}} {{choice.correct}}<span></td>
 		<td><button class="btn btn-danger" ng-click="deleteQuestion(question._id)">X</button></td>
 	</tr>
 

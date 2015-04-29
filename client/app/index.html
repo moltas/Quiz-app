@@ -2,7 +2,7 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Testa hur svensk du är</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -12,7 +12,7 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="../.tmp/styles/main.css">
+    <link rel="stylesheet" href="/../.tmp/styles/main.css">
     <!-- endbuild -->
   </head>
   <body ng-app="myApp">
@@ -22,16 +22,16 @@
 
 
     <div class="header">
-      <div ng-controller="MainCtrl" class="navbar navbar-default" role="navigation">
+      <div class="navbar navbar-default" role="navigation">
         <div class="container">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#/">Quiz app</a>
+            <a class="navbar-brand" href="#/">Fosterland</a>
           </div>
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
+          <div class="collapse navbar-collapse" ng-controller="headerCtrl">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/createquestion">Create Question</a></li>
+              <!-- sets an active class if current location is true -->
+              <li ng-class="{ active: isActive('/')}"><a href="#/">Quiz</a></li>
+              <li ng-class="{ active: isActive('/about')}"><a ng-href="#/about">About</a></li>
             </ul>
           </div>
         </div> 
@@ -49,7 +49,6 @@
 
     <div class="footer">
       <div class="container">
-        <p>This is the foot of the page.</p>
       </div>
     </div>
 

@@ -3,6 +3,13 @@ $icon-font-path: "../bower_components/bootstrap/dist/fonts/bootstrap/";
 /*@import "bow/../../bootstrap/dist/css/bootstrap.css";*/
 // endbower
 
+$ebony: #22313F;
+$background-color: #2B384F;
+$royal-blue: #4183D7;
+$light-blue: #C5EFF7;
+$color-yellow: #F4D03F;
+$hover-color: #89C4F4;
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -11,12 +18,17 @@ $icon-font-path: "../bower_components/bootstrap/dist/fonts/bootstrap/";
 }
 
 body {
-  padding: 0;
+  padding: $background-color;
+  background: #2B384F;
 }
+
+*, span {
+  color: white;
+}
+
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
-.marketing,
 .footer {
   padding-left: 15px;
   padding-right: 15px;
@@ -25,6 +37,7 @@ body {
 /* Custom page header */
 .header {
   margin-bottom: 10px;
+  background: $ebony;
 
   /* Make the masthead heading the same height as the navigation */
   h3 {
@@ -35,11 +48,39 @@ body {
   }
 }
 
+.navbar-default {
+  background: $ebony;
+  border: none;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #fff;
+}
+.navbar-default .navbar-nav > li > a:hover {
+  color: $hover-color;
+}
+
+.navbar .nav > .active > a,
+.navbar .nav > .active > a:focus,
+.navbar .nav > .active > a:hover {
+  background: $royal-blue;
+  color: $ebony;
+}
+
+.navbar-default .navbar-brand {
+  color: $color-yellow;
+}
+
+.question-nav a:hover {
+  color: none;
+}
+
+
+
 /* Custom page footer */
 .footer {
   padding-top: 19px;
   color: #777;
-  border-top: 1px solid #e5e5e5;
 }
 
 .container-narrow > hr {
@@ -50,21 +91,13 @@ body {
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
-
+  background: $ebony;
   .btn {
     font-size: 21px;
     padding: 14px 24px;
   }
 }
 
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-
-  p + h4 {
-    margin-top: 28px;
-  }
-}
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
@@ -74,14 +107,15 @@ body {
 
   /* Remove the padding we set earlier */
   .header,
-  .marketing,
   .footer {
     padding-left: 0;
     padding-right: 0;
   }
+
   /* Space out the masthead */
   .header {
     margin-bottom: 30px;
+    background: $ebony;
   }
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
@@ -89,14 +123,33 @@ body {
   }
 }
 
-label {
+/*Checkbox styling*/
+
+.answer {
+  float: left;
+  width: 45%;
+  text-align: center;
+  margin: 2%;
+  background: $royal-blue;
+  border: none;
+
+/*  -webkit-box-shadow: inset 5px 49px 30px 1px rgba(201, 201, 201, 0.25);
+  -moz-box-shadow:    inset 5px 49px 30px 1px rgba(201, 201, 201, 0.25);
+  box-shadow:         inset 5px 49px 30px 1px rgba(201, 201, 201, 0.25);*/
+}
+
+.answer label {
   cursor: pointer;
   margin: 0;
   display: block;
   height: 100%;
-
+  padding: 10px 0;
+  
 }
 
+.answer label h4 {
+  color: #fff;
+}
 
 .question-image {
   max-width: 100%;
@@ -104,25 +157,14 @@ label {
 
 h3 { padding: 10px 0; margin: 0; }
 
-.answer {
-  float: left;
-  width: 45%;
-  text-align: center;
-  margin: 2%;
-  border: 2px solid #C9C9C9;
-
-  -webkit-box-shadow: inset 5px 49px 30px 1px rgba(201, 201, 201, 0.25);
-  -moz-box-shadow:    inset 5px 49px 30px 1px rgba(201, 201, 201, 0.25);
-  box-shadow:         inset 5px 49px 30px 1px rgba(201, 201, 201, 0.25);
-}
-
+/*custom checkbox-style*/
 
 div > input[type=checkbox]{
     display:none
 }
 
 .answer.blue:hover{
-    background: #4B96EB;
+    background: $hover-color;
 }
 
 
@@ -138,6 +180,7 @@ div > input[type=checkbox]:checked + .red{
     color: #fff;
 }
 
+/*animation that pulsates*/
 @-webkit-keyframes pulse {
   0%      { transform:scale(1); }
   25%     { transform:scale(1.2); }
@@ -146,19 +189,42 @@ div > input[type=checkbox]:checked + .red{
 
 
 
-.score-menu-item {
-  background: #D94E4E;
+/*overwrites the bootstrap link color*/
+.navbar-default .navbar-nav > .right > a {
   color: white;
-  border-left: 1px solid #e7e7e7;
+}
+.navbar-default .navbar-nav > .wrong > a {
+  color: white;
 }
 
-.score-menu-item > a {
-  color: white; 
+.right { 
+  background: #7EBF39;
+}
+.wrong {
+  background: #D94E4E;
 }
 
+.question-text h4 {
+  color: white;
+}
 
+.question-nav {
+  background: $ebony;
+  border: none;
+}
 
-.right { background: #7EBF39; }
-.wrong {background: #D94E4E; }
+.quiz-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
 
+.quiz-title:before {
+  content: "";
+  display: inline-block;
+  background: url("/../app/images/swedish-flag-graphic.png") no-repeat;
+  background-size: cover;
+  width: 50px;
+  height: 30px;
+  margin-right: 15px;
 
+}

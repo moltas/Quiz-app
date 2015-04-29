@@ -1,24 +1,26 @@
-<div class="navbar navbar-default" role="navigation">
+<div class="quiz-header">
+  <h1 class="quiz-title">Hur Svensk är du?</h1>
+</div>
+
+<div class="navbar navbar-default question-nav">
   <div class="navbar-header">
-    <div class="collapse navbar-collapse" id="js-navbar-collapse">
+    <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li ng-repeat="questions in questions" id="{{$index}}" green-or-red="$index">
-          <a  href ng-click="setCounter($index)">{{$index + 1}}</a> 
+        <li ng-repeat="questions in questions" id="{{$index}}">
+          <a>{{$index + 1}}</a> 
         </li> 
       </ul>
     </div>
   </div>
 </div>
-
-
+  
 <!-- picture to the question -->
 <div class="jumbotron">
-  <h3>runOnce is currently: {{runOnce}}</h3>
   <img src="{{questions[counter].image}}" class="question-image">
 </div>
 
 
-<div>
+<div class="question-text">
   <h4>{{questions[counter].text}}</h4>
 </div>
 
@@ -26,19 +28,9 @@
 
 <div ng-repeat="choice in questions[counter].choices" class="answer blue">
   <input type="checkbox" name="options" id="{{choice}}"/>
-  <label for="{{choice}}" ng-click="saveAnswer(choice, questions[counter].choices)"
+  <label for="{{choice}}" ng-click="saveAnswer(choice, questions[counter].choices, counter)"
   green-or-red correct="choice.correct" selected="choice.selected">
-    {{choice.selected}}
-    <h3>{{choice.text}}</h3>
+    <h4>{{choice.text}}</h4>
   </label>
 </div>
 
-
-counter: {{counter}}
-</br>
-id: {{answer}}
-</br>
-myVar: {{myVar}}
-</br>
-{{awesome}}
-<button ng-click="awesome = !awesome">Knappjävel</button>
