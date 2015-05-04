@@ -7,13 +7,11 @@ var api = require('./api');
 
 mongoose.connect('mongodb://localhost:27017/questions');
 
+//so we dont have to parse to json
 app.use(bodyParser());
 
 
 //files
-// app.use('/bower_components',  express.static(__dirname + '/../client/bower_components'));
-// app.use(express.static(__dirname + '/../client/app'));
-// app.use('/js', express.static(__dirname + '/../client/app/js'));
 app.use(express.static(__dirname + '/../client'));
 app.use(express.static(__dirname + '/../client/.tmp'));
 app.use(express.static(__dirname + '/../client/app'));
@@ -25,6 +23,8 @@ app.post('/api/questions/', api.create);
 app.delete('/api/questions/:id', api.remove);
 
 
-app.listen(3000, function(){
+var port = Number(process.env.PORT || 3000);
+
+app.listen(port, function(){
 	console.log('I\'m listening...');
 });
