@@ -1,5 +1,5 @@
 <div class="quiz-header">
-  <h1 class="quiz-title">Hur Svensk är du?</h1>
+  <h1 class="quiz-title">Vad kan du om Game of Thrones?</h1>
 </div>
 
 <div class="navbar navbar-default question-nav">
@@ -16,13 +16,14 @@
   
 <!-- picture to the question -->
 <div class="jumbotron">
-  <img src="{{questions[counter].image}}" class="question-image">
+  <!-- <img src="{{questions[counter].image}}" class="question-image"> -->
+  <div class="question-text">
+    <h3>{{questions[counter].text}}</h3>
+  </div>
 </div>
 
 
-<div class="question-text">
-  <h4>{{questions[counter].text}}</h4>
-</div>
+
 
 <!-- div with all the answers -->
 

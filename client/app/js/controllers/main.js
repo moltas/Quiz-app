@@ -23,7 +23,6 @@ function ($scope, $timeout, $rootScope, answerService, questions, $location, dat
   $scope.counter = 0;
   $scope.playerScore = 0;
   var questionLength = null;
-
   $rootScope.runOnce = false; //stop user from choosing multiple answers
   var running = false; //stop user from clicking multiple times on a answer
 
@@ -41,7 +40,7 @@ function ($scope, $timeout, $rootScope, answerService, questions, $location, dat
 
   refresh();
 
-  var changeView = function(view){
+  $scope.changeView = function(view){
     $location.path(view)
   };
 
@@ -54,7 +53,7 @@ function ($scope, $timeout, $rootScope, answerService, questions, $location, dat
     
     if(counter > questionLength){ //if last question, changes to result page
       addPlayerScore();
-      changeView("/result_page");
+      $scope.changeView("/result_page");
     }
   });
 
@@ -82,10 +81,7 @@ function ($scope, $timeout, $rootScope, answerService, questions, $location, dat
     
     //kollar ifall svar är rätt eller fel
     if(answerService.checkAnswer(correct, selected, index)){
-      $scope.playerScore++;
-         
-    }else{
-      
+      $scope.playerScore++;     
     }
 
     //calls the method in 1.5sec
@@ -105,20 +101,14 @@ function ($scope, $timeout, $rootScope, answerService, questions, $location, dat
     dataService.setLength(questionLength+1); 
   };
 
- 
-
 }]);
 
 
-myApp.controller('resultsCtrl', ['$scope','dataService', function($scope, dataService){
-
-  $scope.playerScore = dataService.data;
-  $scope.questionLength = dataService.length;
-
-}]);
-
+// This controller handles setting the active class in the header
 myApp.controller('headerCtrl', ['$scope', '$location', function($scope, $location){
 
+  // Is used in the header to check if current view is 
+  // equal to the location path
   $scope.isActive = function(view){
     return view === $location.path();
   };

@@ -9,7 +9,6 @@
  * Main module of the application.
  */
 var myApp = angular.module('myApp', [
-  'ngResource',
   'ngRoute',
   'ngAnimate'
 ]);
@@ -19,11 +18,12 @@ myApp.config(function ($routeProvider) {
 
   $routeProvider
     .when('/', {
-      templateUrl: 'partials/questions.html',
+      templateUrl: 'partials/landing_page.html',
       controller: 'MainCtrl'
     })
-    .when('/about', {
-      templateUrl: 'partials/about.html'
+    .when('/quiz', {
+      templateUrl: 'partials/questions.html',
+      controller: 'MainCtrl'
     })
     .when('/result_page', {
       templateUrl: 'partials/result_page.html',

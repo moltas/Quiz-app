@@ -3,12 +3,29 @@ $icon-font-path: "../bower_components/bootstrap/dist/fonts/bootstrap/";
 /*@import "bow/../../bootstrap/dist/css/bootstrap.css";*/
 // endbower
 
-$ebony: #22313F;
-$background-color: #2B384F;
-$royal-blue: #4183D7;
-$light-blue: #C5EFF7;
-$color-yellow: #F4D03F;
-$hover-color: #89C4F4;
+/*variables*/
+
+/*header*/
+$header-background: #22313F;
+$header-color: #E4F1FE;
+$header-title: #E4F1FE;
+$header-bg-active: #6C7A89;
+$header-color-active: #E4F1FE;
+/*body*/
+$background-color: #ABB7B7;
+$page-title: #22313F;
+$hover-color: #D2D7D3;
+$menu-bg: #22313F;
+$option-bg: #6C7A89;
+$option-txt: white;
+
+/*answer colors*/
+$green-bg: #00B16A;
+$green-txt: #fff;
+$red-bg: #F64747;
+$red-txt: #fff;
+
+
 
 .browsehappy {
   margin: 0.2em 0;
@@ -18,8 +35,7 @@ $hover-color: #89C4F4;
 }
 
 body {
-  padding: $background-color;
-  background: #2B384F;
+  background: $background-color;
 }
 
 *, span {
@@ -37,7 +53,7 @@ body {
 /* Custom page header */
 .header {
   margin-bottom: 10px;
-  background: $ebony;
+  background: $header-background;
 
   /* Make the masthead heading the same height as the navigation */
   h3 {
@@ -49,7 +65,7 @@ body {
 }
 
 .navbar-default {
-  background: $ebony;
+  background: $header-background;
   border: none;
 }
 
@@ -63,12 +79,13 @@ body {
 .navbar .nav > .active > a,
 .navbar .nav > .active > a:focus,
 .navbar .nav > .active > a:hover {
-  background: $royal-blue;
-  color: $ebony;
+  background: $header-bg-active;
+  color: $header-color-active;
 }
 
+/*navbar title of the page*/
 .navbar-default .navbar-brand {
-  color: $color-yellow;
+  color: $header-title;
 }
 
 .question-nav a:hover {
@@ -91,12 +108,110 @@ body {
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
-  background: $ebony;
+  background: $menu-bg;
   .btn {
     font-size: 21px;
     padding: 14px 24px;
   }
 }
+
+
+
+
+/*Checkbox styling*/
+
+.answer {
+  float: left;
+  width: 45%;
+  text-align: center;
+  margin: 2%;
+  background: $option-bg;
+  border: none;
+}
+
+.answer label {
+  cursor: pointer;
+  margin: 0;
+  display: block;
+  height: 100%;
+  padding: 10px 0;
+  
+}
+
+.answer label h4 {
+  color: $option-txt;
+}
+
+.question-image {
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+h3 { padding: 10px 0; margin: 0; }
+
+/*custom checkbox-style*/
+
+div > input[type=checkbox]{
+    display:none
+}
+
+.answer.blue:hover{
+    background: $hover-color;
+}
+
+
+div > input[type=checkbox]:checked + .green{
+    background-color: $green-bg;
+    color: $green-txt;
+    animation: pulse 0.8s 3;
+    -webkit-animation: pulse 0.8s 2;
+}
+
+div > input[type=checkbox]:checked + .red{
+    background-color: $red-bg;
+    color: $red-txt;
+}
+
+/*animation that pulsates*/
+@-webkit-keyframes pulse {
+  0%      { transform:scale(1); }
+  25%     { transform:scale(1.2); }
+  75%     { transform:scale(1); }
+}
+
+
+/*overwrites the bootstrap link color*/
+.navbar-default .navbar-nav > .right > a {
+  color: white;
+}
+.navbar-default .navbar-nav > .wrong > a {
+  color: white;
+}
+
+.right { 
+  background: $green-bg;
+}
+.wrong {
+  background: $red-bg;
+}
+
+.question-text h4 {
+  color: white;
+}
+
+.question-nav {
+  background: $menu-bg;
+  border: none;
+}
+
+.quiz-title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: $page-title;
+  font-weight: bold;
+}
+
+
 
 
 /* Responsive: Portrait tablets and up */
@@ -115,7 +230,6 @@ body {
   /* Space out the masthead */
   .header {
     margin-bottom: 30px;
-    background: $ebony;
   }
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
@@ -123,108 +237,36 @@ body {
   }
 }
 
-/*Checkbox styling*/
 
-.answer {
-  float: left;
-  width: 45%;
-  text-align: center;
-  margin: 2%;
-  background: $royal-blue;
-  border: none;
+/*Resonsive: mobile friendly*/
 
-/*  -webkit-box-shadow: inset 5px 49px 30px 1px rgba(201, 201, 201, 0.25);
-  -moz-box-shadow:    inset 5px 49px 30px 1px rgba(201, 201, 201, 0.25);
-  box-shadow:         inset 5px 49px 30px 1px rgba(201, 201, 201, 0.25);*/
-}
+@media screen and (max-width: 500px) {
 
-.answer label {
-  cursor: pointer;
-  margin: 0;
-  display: block;
-  height: 100%;
-  padding: 10px 0;
-  
-}
+  .quiz-title {
+    font-size: 2.5em;
+  }
 
-.answer label h4 {
-  color: #fff;
-}
+  .question-text h3 {
+    font-size: 2em;
+  }
 
-.question-image {
-  max-width: 100%;
-}
+  .question-text span {
+    font-size: 1.7em;
+  }
 
-h3 { padding: 10px 0; margin: 0; }
+  .question-nav {
+    display: none;
+  }
 
-/*custom checkbox-style*/
+  .answer {
+    /*float: none;*/
+    display: block;
+    width: 100%;
+    margin: 0 0 10px 0;
+  }
 
-div > input[type=checkbox]{
-    display:none
-}
-
-.answer.blue:hover{
-    background: $hover-color;
-}
-
-
-div > input[type=checkbox]:checked + .green{
-    background-color: #7EBF39;
-    color: #fff;
-    animation: pulse 0.8s 3;
-    -webkit-animation: pulse 0.8s 2;
-}
-
-div > input[type=checkbox]:checked + .red{
-    background-color: #D94E4E;
-    color: #fff;
-}
-
-/*animation that pulsates*/
-@-webkit-keyframes pulse {
-  0%      { transform:scale(1); }
-  25%     { transform:scale(1.2); }
-  75%     { transform:scale(1); }
-}
-
-
-
-/*overwrites the bootstrap link color*/
-.navbar-default .navbar-nav > .right > a {
-  color: white;
-}
-.navbar-default .navbar-nav > .wrong > a {
-  color: white;
-}
-
-.right { 
-  background: #7EBF39;
-}
-.wrong {
-  background: #D94E4E;
-}
-
-.question-text h4 {
-  color: white;
-}
-
-.question-nav {
-  background: $ebony;
-  border: none;
-}
-
-.quiz-title {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.quiz-title:before {
-  content: "";
-  display: inline-block;
-  background: url("/../app/images/swedish-flag-graphic.png") no-repeat;
-  background-size: cover;
-  width: 50px;
-  height: 30px;
-  margin-right: 15px;
+  .answer label h4 {
+    font-size: 2em;
+  }
 
 }
