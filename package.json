@@ -1,10 +1,14 @@
 {
   "name": "quiz-app",
   "version": "1.0.0",
-  "description": "",
-  "main": "server",
+  "description": "A Mean-stack application",
+  "main": "server/index.js",
   "scripts": {
+    "start": "node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "*"
   },
   "repository": {
     "type": "git",

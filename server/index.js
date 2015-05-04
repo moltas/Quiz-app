@@ -4,6 +4,8 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var api = require('./api');
 
+//lets our port be set by heroku
+var port = Number(process.env.PORT || 3000);
 
 mongoose.connect('mongodb://localhost:27017/questions');
 
@@ -23,7 +25,6 @@ app.post('/api/questions/', api.create);
 app.delete('/api/questions/:id', api.remove);
 
 
-var port = Number(process.env.PORT || 3000);
 
 app.listen(port, function(){
 	console.log('I\'m listening...');
