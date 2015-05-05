@@ -7,7 +7,9 @@ var api = require('./api');
 //lets our port be set by heroku
 var port = Number(process.env.PORT || 3000);
 
-mongoose.connect('mongodb://localhost:27017/questions');
+var mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost:27017/questions';
+
+mongoose.connect(mongoUri);
 
 //so we dont have to parse to json
 app.use(bodyParser());
