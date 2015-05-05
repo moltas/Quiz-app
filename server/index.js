@@ -18,7 +18,7 @@ app.use(bodyParser());
 //files
 app.use(express.static(__dirname + '/../client'));
 app.use(express.static(__dirname + '/../client/app'));
-app.use('/bower_components',  express.static(__dirname + '/bower_components'));
+app.use(express.static(__dirname + '/../client/dist'));
 
 
 
