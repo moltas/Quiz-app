@@ -10,7 +10,8 @@
     "express": "*"
   },
   "engines": {
-    "node": "0.12.2"
+    "node": "0.12.2",
+    "npm": "2.7.4"
   },
   "repository": {
     "type": "git",
