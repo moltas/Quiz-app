@@ -2,9 +2,9 @@
   "name": "quizapp",
   "version": "1.0.0",
   "description": "A Mean-stack application",
-  "main": "server.js",
+  "main": "web.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node web.js"
   },
   "dependencies": {
     "body-parser": "^1.12.3",
