@@ -1,5 +1,5 @@
 {
-  "name": "quiz-app",
+  "name": "quizapp",
   "version": "1.0.0",
   "description": "A Mean-stack application",
   "main": "server/index.js",
