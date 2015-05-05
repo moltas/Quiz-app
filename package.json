@@ -4,7 +4,8 @@
   "description": "A Mean-stack application",
   "main": "server/index.js",
   "scripts": {
-    "start": "node server"
+    "start": "node server",
+    "postinstall": "node_modules/bower/bin/bower_install"
   },
   "dependencies": {
     "express": "*"
