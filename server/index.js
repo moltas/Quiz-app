@@ -1,4 +1,3 @@
-process.env.PWD = process.cwd();
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -17,9 +16,9 @@ app.use(bodyParser());
 
 
 //files
-app.use(express.static(process.env.PWD + '/../client'));
-app.use(express.static(process.env.PWD + '/../client/.tmp'));
-app.use(express.static(process.env.PWD + '/../client/app'));
+app.use(express.static(__dirname + '/../client'));
+app.use(express.static(__dirname + '/../client/.tmp'));
+app.use(express.static(__dirname + '/../client/app'));
 
 
 //API
