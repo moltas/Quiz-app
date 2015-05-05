@@ -19,6 +19,7 @@ app.use(bodyParser());
 app.use(express.static(__dirname + '/../client'));
 app.use(express.static(__dirname + '/../client/.tmp'));
 app.use(express.static(__dirname + '/../client/app'));
+app.use(express.static(__dirname + '/../client/bower_components'));
 
 
 //API
