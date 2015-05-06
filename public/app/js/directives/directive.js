@@ -11,7 +11,7 @@ myApp.directive("greenOrRed", ["$animate", "answerService", function($animate, a
 			scope.$watchGroup(['correct', 'selected'], function(values){
 				var correct = values[0];
 				var selected = values[1];
-				console.log(values[0] + " : " + values[1]);
+				
 				if(correct && selected){
 					$animate.addClass(elem, "green");
 				}else if(!correct && selected){
