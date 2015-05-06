@@ -48,7 +48,6 @@ myApp.controller('CreateQuestionCtrl', ['$scope', 'questions', function($scope, 
 
 		// console.log(question);
 		questions.deleteQuestion(id).success(function(){
-			console.log("fire!.. Delete!");
 			refresh();
 		});
 
