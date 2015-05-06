@@ -178,6 +178,16 @@ div > input[type=checkbox]:checked + .red{
   25%     { transform:scale(1.2); }
   75%     { transform:scale(1); }
 }
+@-moz-keyframes pulse {
+  0%      { transform:scale(1); }
+  25%     { transform:scale(1.2); }
+  75%     { transform:scale(1); }
+}
+@keyframes pulse {
+  0%      { transform:scale(1); }
+  25%     { transform:scale(1.2); }
+  75%     { transform:scale(1); }
+}
 
 
 /*overwrites the bootstrap link color*/

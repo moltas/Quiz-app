@@ -332,17 +332,13 @@ myApp.directive("greenOrRed", ["$animate", "answerService", function($animate, a
 		restrict: 'A',
 		scope: {
 			'correct' : '=', //two way binding
-			'selected' : '=',
-			'index' : '@'
+			'selected' : '='
 		},
 		link: function(scope, elem, attr){
-			attr.$observe('index', function(index){
-				console.log(index);
-			});
 			scope.$watchGroup(['correct', 'selected'], function(values){
 				var correct = values[0];
 				var selected = values[1];
-
+				console.log(values[0] + " : " + values[1]);
 				if(correct && selected){
 					$animate.addClass(elem, "green");
 				}else if(!correct && selected){
@@ -350,16 +346,6 @@ myApp.directive("greenOrRed", ["$animate", "answerService", function($animate, a
 				}
 			});
 
-
-		}
-	}
-}]);
-
-myApp.directive("navColor", ["$animate", function($animate){
-	return {
-		restrict: 'A',
-		link: function(scope, elem, attr){
-			console.log(attr.navColor);
 		}
 	}
 }]);
