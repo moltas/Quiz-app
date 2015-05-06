@@ -18,7 +18,6 @@ myApp.controller('CreateQuestionCtrl', ['$scope', 'questions', function($scope, 
 	var refresh = function(){
 		questions.getQuestions().success(function(results){
 			$scope.questions = results;
-			console.log($scope.questions.choices);
 		});
 
 	};
