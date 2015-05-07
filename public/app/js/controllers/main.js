@@ -7,16 +7,9 @@
  * # MainCtrl
  * Controller of the myApp
  */
-var myApp = angular.module('myApp');
 
-myApp.controller('MainCtrl', [ '$scope',
-                               '$timeout',
-                               '$rootScope',
-                               'answerService',
-                               'questions',
-                               '$location', 
-                               'dataService', 
-function ($scope, $timeout, $rootScope, answerService, questions, $location, dataService) {
+myApp.controller('MainCtrl', [ '$scope','$timeout','$rootScope','answerService','questionService','$location', 'dataService', 
+function ($scope, $timeout, $rootScope, answerService, questionService, $location, dataService) {
 
 
     // variables
@@ -31,7 +24,7 @@ function ($scope, $timeout, $rootScope, answerService, questions, $location, dat
 
   //grabs the items from the database
   var refresh = function(){
-    questions.getQuestions().success(function(results){
+    questionService.getQuestions().success(function(results){
       $scope.questions = results;
       questionLength = $scope.questions.length-1;
     });

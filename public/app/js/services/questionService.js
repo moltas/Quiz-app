@@ -1,6 +1,5 @@
-
-
-myApp.factory('questions', ['$http', function($http){
+// handles http requests for services using the $http object
+myApp.factory('questionService', ['$http', function($http){
 
 	var baseUrl = '/api/questions';
 	var questions = {};

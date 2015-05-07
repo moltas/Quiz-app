@@ -1,22 +1,13 @@
 
-'use strict';
+ // handles the creation of questions
+myApp.controller('CreateQuestionCtrl', ['$scope', 'questionService', function($scope, questionService){
 
-/**
- * @ngdoc function
- * @name myApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the myApp
- */
-myApp.controller('CreateQuestionCtrl', ['$scope', 'questions', function($scope, questions){
-
-	// var question = new questions();
-	
+	// pre sets every answer to false
 	$scope.correct1 = false, $scope.correct2 = false, $scope.correct3 = false, $scope.correct4 = false;
-	$scope.questions = [];
+	$scope.questionService = [];
 
 	var refresh = function(){
-		questions.getQuestions().success(function(results){
+		questionService.getQuestions().success(function(results){
 			$scope.questions = results;
 		});
 
@@ -34,7 +25,7 @@ myApp.controller('CreateQuestionCtrl', ['$scope', 'questions', function($scope, 
 																 {text: $scope.option3, correct: $scope.correct3, selected: false},
 																 {text: $scope.option4, correct: $scope.correct4, selected: false});
 
-		questions.postQuestion($scope.question).success(function(){
+		questionService.postQuestion($scope.question).success(function(){
 			$scope.questions.push($scope.question);
 			$scope.question = "", $scope.option1 = "", $scope.option2 = "", $scope.option3 = "", $scope.option4 = "";
 		});
@@ -46,7 +37,7 @@ myApp.controller('CreateQuestionCtrl', ['$scope', 'questions', function($scope, 
 	$scope.deleteQuestion = function(id){
 
 		// console.log(question);
-		questions.deleteQuestion(id).success(function(){
+		questionService.deleteQuestion(id).success(function(){
 			refresh();
 		});
 

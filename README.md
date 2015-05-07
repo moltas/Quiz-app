@@ -8,7 +8,8 @@ The goal was to build an app with my own built backend, get familiar with techno
 # The process
 
 ### The front-end
-I am familiar with Angular since before, so getting started was no problem. Problems I had was mostly logic based, for example getting the checkboxes to animate and then stopping clicks on other checkboxes. I actually went with radio buttons to begin with. Because then you can only have one answer checked. But then I also had a button that changed the view to next question. Radio buttons are all bound to a property on a object. And I need checkboxes because they can be set a property to true or false on each item.
+I am familiar with Angular since before, so getting started was no problem. Problems I had was mostly logic based, for example getting the checkboxes to animate and then stopping clicks on other checkboxes. I actually went with radio buttons to begin with. Because then you can only have one answer checked. But then I also had a button that changed the view to next question. Instead of changing the view automatically, when selecting an answer.
+Radio buttons are all bound to a property on a object. And I needed checkboxes because they can set a property to true or false on each item.
 
 I took my first step at learning directives. I built a directive that adds animations to the checkboxes, and watches values then sets css classes depending on value. 
 
