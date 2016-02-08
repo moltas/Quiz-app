@@ -16,13 +16,13 @@ myApp.controller('resultsCtrl', ['$scope','dataService', function($scope, dataSe
     }else if(scores >= 90){
       return "Få besitter dina kunskaper om Westeros";
     }else if(scores >= 70){
-      return "Du är bättre än få";
+      return "Du är bättre än några";
     }else if(scores >= 50){
-      return "Du är lagomt dålig";
+      return "Gick inget bra det här du. Försök igen.";
     }else if(scores >= 30){
-      return "You know nothing, Jon Snow";
+      return "You know nothing Jon Snow";
     }else{
-      return "You know nothing, Jon Snow";
+      return "You know nothing Jon Snow";
     }
   };
 
